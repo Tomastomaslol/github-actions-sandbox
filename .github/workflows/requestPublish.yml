@@ -20,16 +20,6 @@ jobs:
         env:
            NODE_AUTH_TOKEN: 'EXAMPLE_TOKEN'
         if: contains(github.event.comment.body, 'Publish package')
-          - name: Message success
-            uses: actions/github-script@v4
-            with:
-              script: |
-                github.issues.createComment({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: 'Initialised publish packages 📦 ',
-                });
         run: |
           echo 'Hello Action'
       - name: Message success
