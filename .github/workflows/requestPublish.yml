@@ -1,0 +1,24 @@
+name: Publish packages
+
+on:
+ issue_comment:
+   types: [created, edited]
+
+jobs:
+  Publish-packages:
+    runs-on: ubuntu-latest
+    if: contains(github.event.comment.html_url, '/pull/')
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: "Update Packages"
+        env:
+           NODE_AUTH_TOKEN: 'EXAMPLE_TOKEN'
+        if: contains(github.event.comment.body, 'Publish package')
+        run: |
+          echo 'Hello Action'
