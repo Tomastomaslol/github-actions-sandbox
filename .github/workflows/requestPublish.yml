@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.comment.html_url, '/pull/')
     steps:
-      - uses: actions/github-script@v4
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
