@@ -16,11 +16,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+      if: contains(github.event.comment.body, 'Publish package')
       - name: "Update Packages"
         env:
            NODE_AUTH_TOKEN: 'EXAMPLE_TOKEN'
-        if: contains(github.event.comment.body, 'Publish package')
-      - name: Message initialised publish packages
+      - name: Message initialised
         uses: actions/github-script@v4
         with:
           script: |
