@@ -23,7 +23,7 @@ jobs:
         run: |
           echo 'Hello Action'
       - name: Message success
-        if: ${{ success() }} && contains(github.event.comment.body, 'Publish package')
+        if: ${{ success() && contains(github.event.comment.body, 'Publish package') }}
         uses: actions/github-script@v4
         with:
           script: |
@@ -34,7 +34,7 @@ jobs:
               body: 'Publish packages succeeded! ✅',
             });
       - name: Message failure
-        if: ${{ failure() }} && contains(github.event.comment.body, 'Publish package')
+        if: ${{ failure() && contains(github.event.comment.body, 'Publish package') }}
         uses: actions/github-script@v4
         with:
           script: |
