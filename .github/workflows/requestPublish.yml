@@ -4,7 +4,6 @@ on: [workflow_dispatch]
 jobs:
   Publish-packages:
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.html_url, '/pull/')
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
