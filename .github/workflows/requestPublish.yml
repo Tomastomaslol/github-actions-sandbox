@@ -21,7 +21,7 @@ jobs:
            NODE_AUTH_TOKEN: 'EXAMPLE_TOKEN'
         if: contains(github.event.comment.body, 'Publish package')
         run: |
-          echo 'Hello Action'
+          echo 'Hello Action!'
           echo ${{ github.ref }}
       - name: Message success
         if: ${{ success() && contains(github.event.comment.body, 'Publish package') }}
