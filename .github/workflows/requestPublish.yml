@@ -23,6 +23,7 @@ jobs:
         run: |
           echo 'Hello Action'
           echo ${{ github.ref }}
+          echo 'Bye Action'
       - name: Message success
         if: ${{ success() && contains(github.event.comment.body, 'Publish package') }}
         uses: actions/github-script@v4
