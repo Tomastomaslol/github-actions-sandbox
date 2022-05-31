@@ -1,17 +1,12 @@
 name: Publish packages
 
-on:
- issue_comment:
-   types: [created, edited]
-
+on: [workflow_dispatch]
 jobs:
   Publish-packages:
     runs-on: ubuntu-latest
     if: contains(github.event.comment.html_url, '/pull/')
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
@@ -19,13 +14,15 @@ jobs:
       - name: "Update Packages"
         env:
            NODE_AUTH_TOKEN: 'EXAMPLE_TOKEN'
-        if: contains(github.event.comment.body, 'Publish package')
         run: |
-          echo 'Hello Action'
+          echo 'Hello Action!'
           echo ${{ github.ref }}
-          echo 'Bye Action'
+          echo ${{ github.head_ref }}
+          git status
+          git branch -l
+          echo 'Bye!'
       - name: Message success
-        if: ${{ success() && contains(github.event.comment.body, 'Publish package') }}
+        if: ${{ success() }}
         uses: actions/github-script@v4
         with:
           script: |
@@ -36,7 +33,7 @@ jobs:
               body: 'Publish packages succeeded! ✅',
             });
       - name: Message failure
-        if: ${{ failure() && contains(github.event.comment.body, 'Publish package') }}
+        if: ${{ failure() }}
         uses: actions/github-script@v4
         with:
           script: |
