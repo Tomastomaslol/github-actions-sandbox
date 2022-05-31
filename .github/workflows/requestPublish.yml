@@ -2,10 +2,10 @@ name: Publish packages
 
 on:
  issue_comment:
-   types: [created, edited]
     branches:
       - '*'
       - '!master'
+   types: [created, edited]
 
 jobs:
   Publish-packages:
