@@ -1,12 +1,6 @@
 name: Publish packages
 
-on:
- issue_comment:
-    branches:
-      - '*'
-      - '!master'
-   types: [created, edited]
-
+on: [workflow_dispatch]
 jobs:
   Publish-packages:
     runs-on: ubuntu-latest
