@@ -3,7 +3,6 @@ name: Publish packages
 on:
  issue_comment:
    types: [created, edited]
-  push:
     branches:
       - '*'
       - '!master'
