@@ -24,6 +24,8 @@ jobs:
           echo 'Hello Action!'
           echo ${{ github.ref }}
           echo ${{ github.head_ref }}
+          git status
+          git branch -l
           echo 'Bye!'
       - name: Message success
         if: ${{ success() && contains(github.event.comment.body, 'Publish package') }}
