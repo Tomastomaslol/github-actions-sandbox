@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: payble-payments/action-branch-name@feat/update-and-clean
         with:
-          allowed_prefixes: 'feature,stable,fix' # All branches should start with the given prefix
+          allowed_prefixes: 'feature,stable,fix,test' # All branches should start with the given prefix
           ignore: master,develop # Ignore exactly matching branch names from convention
           min_length: 5 # Min length of the branch name
           max_length: 20 # Max length of the branch name
